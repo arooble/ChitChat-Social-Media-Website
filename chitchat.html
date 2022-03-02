@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | ChitChat</title>
+      <!-- ICONSCOUT CDN -->
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+      <!-- STYLESHEET -->
+    <link rel="stylesheet" href="chitchat.css">
+  
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h2 class="log">
+                ChitChat
+            </h2>
+            <div class="search-bar">
+                <i class="uil uil-search"></i>
+                <input type="search" placeholder="Search ChitChat">
+            </div>
+            <div class="create">
+                <label class="btn btn-primary" for="create-post">Create</label>
+                <div class="profile-photo">
+                    <img src="./images/profile-78.jpg">
+                </div>
+                <!-- menu button to show sidebar -->
+                <button id="menu-btn"><i class="uil uil-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!------------------------- MAIN -------------------------->
+    <main>
+        <div class="container">
+            <!--======================== LEFT ==========================-->
+            <div class="left">
+                <a class="profile">
+                    <div class="profile-photo">
+                        <img src="./images/profile-78.jpg">
+                    </div>
+                    <div class="handle">
+                        <h4>Aaliyah Rodriguez</h4>
+                        <p class="text-muted">
+                            @Aaliyah
+                        </p>
+                    </div>
+                </a>
+
+                <!-- close button -->
+                <span id="close-btn"><i class="uil uil-multiply"></i></span>
+
+                <!-------------------- SIDEBAR ------------------------->
+                <div class="sidebar">
+                    <a class="menu-item active">
+                        <span><i class="uil uil-home"></i></span><h3>Home</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-compass"></i></span><h3>Explore</h3>
+                    </a>
+                    <a class="menu-item" id="notifications">
+                        <span><i class="uil uil-bell"><small class="notification-count">20+</small></i></span><h3>Notifications</h3>
+                        <!-------------------- NOTIFICATION POPUP ---------------->
+                        <div class="notifications-popup">
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="data:image/jpeg;base64,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">
+                                </div>
+                                <div class="notification-body">
+                                    <b>jamorant</b> accepted your friend request
+                                    <small class="text-muted">2 DAYS AGO</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="https://www.womenseday.org/wp-content/uploads/2018/10/Gary_Vaynerchuk.jpg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>garyvee</b> commented on your post
+                                    <small class="text-muted">1 HOUR AGO</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="https://preview.redd.it/vxbhkl56wof81.jpg?width=640&crop=smart&auto=webp&s=3e9e861a7b7e3af86f0d72e635b34d1cacb88877">
+                                </div>
+                                <div class="notification-body">
+                                    <b>champagnepapi</b> and <b>283 others </b> liked your post
+                                    <small class="text-muted">4 MINUTES AGO</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="https://imagez.tmz.com/image/ba/4by3/2021/02/22/ba0cdca95a134e4e8f3305d6e64f64a8_xl.jpg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>cristano</b> commented on a post you are tagged in
+                                    <small class="text-muted">2 DAYS AGO</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="https://uploads-ssl.webflow.com/60c2316f312ff6b0fa9c945f/60db078405cfcb12cfdb568e_kyliejenner.jpeg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>kyliejenner</b> commented on a post you are tagged in
+                                    <small class="text-muted">1 HOUR AGO</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="https://lakersdaily.com/wp-content/uploads/2021/12/Screen-Shot-2021-12-04-at-4.46.48-PM.jpg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>kingjames</b> commented on your post
+                                    <small class="text-muted">1 HOUR AGO</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------------- END NOTIFICATION POPUP ---------------->
+                    </a>
+                    <a class="menu-item" id="messages-notification">
+                        <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span><h3>Messages</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-bookmark"></i></span><h3>Bookmarks</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-chart-line"></i></span><h3>Analytics</h3>
+                    </a>
+                    <a class="menu-item" id="theme">
+                        <span><i class="uil uil-palette"></i></span><h3>Theme</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-setting"></i></span><h3>Settings</h3>
+                    </a>                        
+                </div>
+                <!------------------- END OF SIDEBAR -------------------->
+                <label for="create-post" class="btn btn-primary">Create Post</label>
+            </div>
+            <!------------------- END OF LEFT -------------------->
+
+
+
+            <!--======================== MIDDLE ==========================-->
+            <div class="middle">
+                <!------------------- STORIES -------------------->
+                <div class="stories">
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./images/profile-78.jpg">
+                        </div>
+                        <p class="name">Your Story</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./images/profile-1.jpg">
+                        </div>
+                        <p class="name">Diana Lu</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./images/profile-6.jpg">
+                        </div>
+                        <p class="name">Amy Collins</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./images/profile-11.jpg">
+                        </div>
+                        <p class="name">Saquon Photography</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./images/profile-12.jpg">
+                        </div>
+                        <p class="name">Jane Treat's</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./images/profile-16.jpg">
+                        </div>
+                        <p class="name">Tom White</p>
+                    </div>
+                </div>
+                <!------------------- END OF STORIES -------------------->
+                <form class="create-post">
+                    <div class="profile-photo">
+                        <img src="./images/profile-78.jpg">
+                    </div>
+                    <input type="text" placeholder="What's on your mind, Aaliyah?" id="create-post">
+                    <input type="submit" value="Post" class="btn btn-primary">
+                </form>
+
+                <!------------------- FEEDS --------------------->
+                <div class="feeds">
+                    <!------------------- FEED 1 --------------------->
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./images/profile-13.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Alicia Williams</h3>
+                                    <small>Chicago, 18 MINUTES AGO</small>
+                                </div>
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+
+                        <div class="photo">
+                            <img src="./images/feed-15.jpg">
+                        </div>
+
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span><i class="uil uil-heart"></i></span>
+                                <span><i class="uil uil-comment-dots"></i></span>
+                                <span><i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span><i class="uil uil-bookmark-full"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="liked-by">
+                            <span><img src="./images/profile-10.jpg"></span>
+                            <span><img src="./images/profile-4.jpg"></span>
+                            <span><img src="./images/profile-15.jpg"></span>
+                            <p>Liked by <b>champagnepapi</b> and <b>21,382 others</b></p>
+                        </div>
+
+                        <div class="caption">
+                            <p><b>AliciaWilliams1</b> Lorem ipsum dolor sit quisquam eius. <span class="harsh-tag">#lifestyle</span></p>
+                        </div>
+                        <div class="comments text-muted">View all 1,277 comments</div>
+                    </div>
+                    <!---------------- END OF FEED ----------------->
+                    <!------------------- FEED 2 --------------------->
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./images/profile-15.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Leonardo Balotelli</h3>
+                                    <small>Milan, 1 HOUR AGO</small>
+                                </div>
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+
+                        <div class="photo">
+                            <img src="./images/feed-13.jpg">
+                        </div>
+
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span><i class="uil uil-heart"></i></span>
+                                <span><i class="uil uil-comment-dots"></i></span>
+                                <span><i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span><i class="uil uil-bookmark-full"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="liked-by">
+                            <span><img src="./images/profile-10.jpg"></span>
+                            <span><img src="./images/profile-4.jpg"></span>
+                            <span><img src="./images/profile-15.jpg"></span>
+                            <p>Liked by <b>RondoDaSosa</b> and <b>4,323 others</b></p>
+                        </div>
+
+                        <div class="caption">
+                            <p><b>LeonardoB</b> Lorem ipsum dolor sit quisquam eius. <span class="harsh-tag">#lifestyle</span></p>
+                        </div>
+                        <div class="comments text-muted">View all 473 comments</div>
+                    </div>
+                    <!---------------- END OF FEED ----------------->
+                    <!------------------- FEED 3 --------------------->
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./images/profile-98.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Dave Dragic</h3>
+                                    <small>Lisbon, 31 MINUTES AGO</small>
+                                </div>
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+
+                        <div class="photo">
+                            <img src="./images/feed-12.jpg">
+                        </div>
+
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span><i class="uil uil-heart"></i></span>
+                                <span><i class="uil uil-comment-dots"></i></span>
+                                <span><i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span><i class="uil uil-bookmark-full"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="liked-by">
+                            <span><img src="./images/profile-10.jpg"></span>
+                            <span><img src="./images/profile-4.jpg"></span>
+                            <span><img src="./images/profile-15.jpg"></span>
+                            <p>Liked by <b>ar.himothy</b> and <b>323 others</b></p>
+                        </div>
+
+                        <div class="caption">
+                            <p><b>DaveDragic1989</b> Lorem ipsum dolor sit quisquam eius. <span class="harsh-tag">#lifestyle</span></p>
+                        </div>
+                        <div class="comments text-muted">View all 34 comments</div>
+                    </div>
+                    <!---------------- END OF FEED ----------------->
+                    <!------------------- FEED 4 --------------------->
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./images/profile-97.jpeg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Whitney Jenkins</h3>
+                                    <small>San Francisco, 29 MINUTES AGO</small>
+                                </div>
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+
+                        <div class="photo">
+                            <img src="./images/feed-81.jpg">
+                        </div>
+
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span><i class="uil uil-heart"></i></span>
+                                <span><i class="uil uil-comment-dots"></i></span>
+                                <span><i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span><i class="uil uil-bookmark-full"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="liked-by">
+                            <span><img src="./images/profile-10.jpg"></span>
+                            <span><img src="./images/profile-4.jpg"></span>
+                            <span><img src="./images/profile-15.jpg"></span>
+                            <p>Liked by <b>KingJames</b> and <b>1,023 others</b></p>
+                        </div>
+
+                        <div class="caption">
+                            <p><b>WhitneyJ_415</b> Lorem ipsum dolor sit quisquam eius. <span class="harsh-tag">#lifestyle</span></p>
+                        </div>
+                        <div class="comments text-muted">View all 153 comments</div>
+                    </div>
+                    <!---------------- END OF FEED ----------------->
+                    <!------------------- FEED 5 --------------------->
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./images/profile-99.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Kweku Boateng</h3>
+                                    <small>Accra, 3 HOURS AGO</small>
+                                </div>
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+
+                        <div class="photo">
+                            <img src="./images/feed-29.jpg">
+                        </div>
+
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span><i class="uil uil-heart"></i></span>
+                                <span><i class="uil uil-comment-dots"></i></span>
+                                <span><i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span><i class="uil uil-bookmark-full"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="liked-by">
+                            <span><img src="./images/profile-10.jpg"></span>
+                            <span><img src="./images/profile-4.jpg"></span>
+                            <span><img src="./images/profile-15.jpg"></span>
+                            <p>Liked by <b>cristano</b> and <b>220,323 others</b></p>
+                        </div>
+
+                        <div class="caption">
+                            <p><b>HamidouKalou1</b> Lorem ipsum dolor sit quisquam eius. <span class="harsh-tag">#lifestyle</span></p>
+                        </div>
+                        <div class="comments text-muted">View all 12,277 comments</div>
+                    </div>
+                    <!---------------- END OF FEED ----------------->
+                    <!------------------- FEED 6 --------------------->
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./images/profile-9.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Brian Stevenson</h3>
+                                    <small>Charlotte, 18 HOURS AGO</small>
+                                </div>
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+
+                        <div class="photo">
+                            <img src="./images/feed-84.jpg">
+                        </div>
+
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span><i class="uil uil-heart"></i></span>
+                                <span><i class="uil uil-comment-dots"></i></span>
+                                <span><i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span><i class="uil uil-bookmark-full"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="liked-by">
+                            <span><img src="./images/profile-10.jpg"></span>
+                            <span><img src="./images/profile-4.jpg"></span>
+                            <span><img src="./images/profile-15.jpg"></span>
+                            <p>Liked by <b>garyvee</b> and <b>1,098 others</b></p>
+                        </div>
+
+                        <div class="caption">
+                            <p><b>B_Steve</b> Lorem ipsum dolor sit quisquam eius. <span class="harsh-tag">#lifestyle</span></p>
+                        </div>
+                        <div class="comments text-muted">View all 119 comments</div>
+                    </div>
+                    <!---------------- END OF FEED ----------------->
+                    <!------------------- FEED 7 --------------------->
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./images/profile-3.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Vanessa Daniels</h3>
+                                    <small>Los Angeles, 14 HOURS AGO</small>
+                                </div>
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+
+                        <div class="photo">
+                            <img src="./images/feed-7.jpg">
+                        </div>
+
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span><i class="uil uil-heart"></i></span>
+                                <span><i class="uil uil-comment-dots"></i></span>
+                                <span><i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span><i class="uil uil-bookmark-full"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="liked-by">
+                            <span><img src="./images/profile-10.jpg"></span>
+                            <span><img src="./images/profile-4.jpg"></span>
+                            <span><img src="./images/profile-15.jpg"></span>
+                            <p>Liked by <b>kyliejenner</b> and <b>8,939 others</b></p>
+                        </div>
+
+                        <div class="caption">
+                            <p><b>VanessaW.eth</b> Lorem ipsum dolor sit quisquam eius. <span class="harsh-tag">#lifestyle</span></p>
+                        </div>
+                        <div class="comments text-muted">View all 455 comments</div>
+                    </div>
+                    <!---------------- END OF FEED ----------------->
+                </div>
+                <!------------------------------- END OF FEEDS ------------------------------------>
+            </div>
+            <!--======================== END OF MIDDLE ==========================-->
+
+
+            <!--======================== RIGHT ==========================-->
+            <div class="right">
+                <div class="messages">
+                    <div class="heading">
+                        <h4>Messages</h4><i class="uil uil-edit"></i>
+                    </div>
+                    <!------------ SEARCH BAR -------------->
+                    <div class="search-bar">
+                        <i class="uil uil-search"></i>
+                        <input type="search" placeholder="Search messages" id="message-search">
+                    </div>
+                    <!------------ MESSAGES CATEGORY -------------->
+                    <div class="category">
+                        <h6 class="active">Primary</h6>
+                        <h6>General</h6>
+                        <h6 class="message-requests">Requests(7)</h6>
+                    </div>
+                    <!------------ MESSAGE -------------->
+                    <!----- MESSAGE ----->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="./images/profile-2.jpg">
+                        </div>
+                        <div class="message-body">
+                            <h5>Omar Williamson</h5>
+                            <p class="text-muted">What's up, Aaliyah</p>
+                        </div>
+                    </div>
+                    <!----- MESSAGE ----->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="./images/profile-3.jpg">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Vanessa Daniels</h5>
+                            <p class="text-bold">Thanks, sis!</p>
+                        </div>
+                    </div>
+                    <!----- MESSAGE ----->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="./images/profile-4.jpg">
+                        </div>
+                        <div class="message-body">
+                            <h5>Maria Bertucci</h5>
+                            <p class="text-bold">LMAOOOO 😭</p>
+                        </div>
+                    </div>
+                    <!----- MESSAGE ----->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="./images/profile-5.jpg">
+                        </div>
+                        <div class="message-body">
+                            <h5>Ashleigh G.</h5>
+                            <p class="text-bold">4 new messages</p>
+                        </div>
+                    </div>
+                    <!----- MESSAGE ----->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="./images/profile-6.jpg">
+                        </div>
+                        <div class="message-body">
+                            <h5>Julie Edwards</h5>
+                            <p class="text-muted">lol u right</p>
+                        </div>
+                    </div>
+                    <!----- MESSAGE ----->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="./images/profile-7.jpg">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Kayla Brooks</h5>
+                            <p class="text-bold">Meet us at 3pm!</p>
+                        </div>
+                    </div>
+                </div>
+                <!------------ END OF MESSAGES -------------->
+
+
+                <!------------ FRIEND REQUESTS -------------->
+                <div class="friend-requests">
+                    <h4>Requests</h4>
+                    <!----- REQUEST 1----->
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="./images/profile-8.jpg">
+                            </div>
+                            <div>
+                                <h5>Marc Lindari</h5>
+                                <p class="text-muted">4 mutual friends</p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary">Accept</button>
+                            <button class="btn">Decline</button>
+                        </div>
+                    </div>
+                    <!----- REQUEST 2----->
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="./images/profile-12.jpg">
+                            </div>
+                            <div>
+                                <h5>Olga Shevchenko</h5>
+                                <p class="text-muted">1 mutual friends</p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary">Accept</button>
+                            <button class="btn">Decline</button>
+                        </div>
+                    </div>
+                    <!----- REQUEST 3----->
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="./images/profile-10.jpg">
+                            </div>
+                            <div>
+                                <h5>Rebecca Lawrence</h5>
+                                <p class="text-muted">19 mutual friends</p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary">Accept</button>
+                            <button class="btn">Decline</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--====================== END OF RIGHT ==========================-->
+        </div>
+    </main>
+
+ <!--================================================ THEME CUSTOMIZATION =============================================-->
+ <div class="customize-theme">
+    <div class="card">
+        <h2>Customize your view</h2>
+        <p class="text-muted">Manage your font size, color, and background.</p>
+
+        <!------------ FONT SIZES ------------->
+        <div class="font-size">
+            <h4>Font Size</h4>
+            <div>
+                <h6>Aa</h6>
+            <div class="choose-size">
+                <span class="font-size-1"></span>
+                <span class="font-size-2"></span>
+                <span class="font-size-3"></span>
+                <span class="font-size-4"></span>
+                <span class="font-size-5"></span>
+            </div>
+            <h3>Aa</h3>
+            </div>
+        </div>
+
+        <!------------ PRIMARY COLORS ------------->
+        <div class="color">
+            <h4>Color</h4>
+            <div class="choose-color">
+            <span class="color-1 active"></span>
+            <span class="color-2"></span>
+            <span class="color-3"></span>
+            <span class="color-4"></span>
+            <span class="color-5"></span>
+            </div>
+        </div>
+
+        <!---------- BACKGROUND COLORS ------------>
+        <div class="background">
+            <h4>Background</h4>
+            <div class="choose-bg">
+                <div class="bg-1 active">
+                    <span></span>
+                    <h5 for="bg-1">Light</h5>
+                </div>
+                <div class="bg-2">
+                    <span></span>
+                    <h5>Dim</h5>
+                </div>
+                <div class="bg-3">
+                    <span></span>
+                    <h5 for="bg-3">Lights Out</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER  -->
+
+
+<footer>
+    <div class="container footer__container">
+      <div class="footer__1">
+          <a href="index.html" class="footer__logo"><h3>ChitChat</h3></a>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+          ipsum nobis ratione.
+        </p>
+        <div class="footer__subscribe">
+          <input type="email" placeholder="Enter Email" required />
+          <button type="submit"><i class="uil uil-arrow-right"></i></button>
+        </div>
+      </div>
+
+
+      <div class="footer__3">
+        <h4>Privacy</h4>
+        <ul class="privacy">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & conditions</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__4">
+        <h4>Contact Us</h4>
+        <p>
+          security@chitchat.com
+        </p>
+        <ul class="footer__socials">
+          <li>
+            <a href="https://www.facebook.com"><i class="uil uil-facebook-f"></i></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com"><i class="uil uil-instagram-alt"></i></a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com"><i class="uil uil-twitter"></i></a>
+          </li>
+          <li>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <small>Copyright &copy; 2022 Ahmed Artan-Rooble</small>
+    </div>
+  </footer>
+
+
+
+<!-- END OF FOOTER -->
+
+<script src="chitchat.js"></script>
+</body>
+</html>
